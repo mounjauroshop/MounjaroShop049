@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mounjaro Shop - Canetas de Emagrecimento</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #4A90E2, #50E3C2);
+      color: #222222;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background-color: #222A53;
+      padding: 1.4rem 2rem;
+      text-align: center;
+      font-weight: 700;
+      font-size: 2rem;
+      color: #fff;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      user-select: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+    }
+    main {
+      flex: 1;
+      max-width: 900px;
+      margin: 3rem auto 4rem;
+      padding: 2rem;
+      background: #ffffffdd;
+      border-radius: 24px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.8rem;
+      min-height: 500px;
+    }
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      max-width: 480px;
+    }
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: #003366;
+      margin-bottom: 0.3rem;
+      line-height: 1.1;
+      letter-spacing: 0.06em;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #0a3c66;
+      margin-top: 0.15rem;
+      line-height: 1.4;
+    }
+    .hero .tagline {
+      margin-top: 1rem;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #e94e1b;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-style: italic;
+    }
+    /* Offer Card */
+    .offer-card {
+      background: #d0e7ff;
+      color: #1a3f6b;
+      padding: 1.4rem 2.5rem;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 380px;
+      box-shadow: 0 4px 15px rgba(29, 77, 130, 0.3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 700;
+      font-size: 1.6rem;
+      user-select: none;
+      text-align: center;
+      letter-spacing: 0.05em;
+    }
+    /* Buy Button */
+    .btn-buy {
+      background: #003366;
+      color: #ffffff;
+      border: none;
+      border-radius: 28px;
+      padding: 1.4rem 5rem;
+      font-size: 1.4rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 24px #002249cc;
+      transition: background-color 0.25s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      user-select: none;
+      align-self: center;
+    }
+    .btn-buy:hover,
+    .btn-buy:focus {
+      background: #061f4d;
+      outline: none;
+    }
+    /* Product Info Section */
+    .product-info {
+      color: #333333dd;
+      font-size: 1.12rem;
+      line-height: 1.55;
+      max-width: 650px;
+      text-align: center;
+      font-weight: 500;
+      user-select: none;
+    }
+    .product-info strong {
+      color: #e94e1b;
+      font-weight: 700;
+    }
+    /* Benefit List */
+    .benefits {
+      margin-top: 1.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.6rem 3rem;
+      max-width: 600px;
+      user-select: none;
+    }
+    .benefit {
+      background: #f5faff;
+      border-radius: 16px;
+      padding: 1.05rem 1.5rem;
+      box-shadow: 0 3px 10px #b5d1fa88;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: #1a3f6b;
+      flex: 1 1 220px;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      user-select: none;
+    }
+    .benefit::before {
+      content: "✔️";
+      font-size: 1.3rem;
+      color: #49b857;
+      flex-shrink: 0;
+    }
+    /* Product Image */
+    .product-image-container {
+      max-width: 460px;
+      width: 100%;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      user-select: none;
+    }
+    .product-image-container img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    /* Form Section */
+    .form-container {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .form-container input {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    .form-container button {
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 1rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background 0.3s;
+      width: 100%;
+    }
+    .form-container button:hover {
+      background: #218838;
+    }
+    /* Testimonials Section */
+    .testimonials {
+      width: 100%;
+      max-width: 650px;
+      text-align: center;
+    }
+    .testimonials h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: #003366;
+      font-weight: 700;
+      user-select: none;
+    }
+    .testimonial-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    .testimonial {
+      background: #f0f8ff;
+      box-shadow: 0 4px 15px rgba(0, 61, 147, 0.15);
+      border-radius: 18px;
+      padding: 1.8rem 2.2rem;
+      width: 280px;
+      font-style: normal;
+      color: #1a3f6b;
+      position: relative;
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 1.2rem;
+      line-height: 1.45;
+    }
+    .testimonial::before {
+      content: "❝";
+      font-size: 3.4rem;
+      color: #49b857;
+      position: absolute;
+      top: 12px;
+      left: 16px;
+      font-weight: 700;
+    }
+    .testimonial p {
+      margin: 0;
+      padding-left: 40px;
+      font-style: italic;
+      flex-grow: 1;
+    }
+    .stars {
+      color: #ffbb00;
+      font-size: 1.4rem;
+      user-select: none;
+      padding-left: 40px;
+    }
+    .testimonial .author {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #e94e1b;
+      text-transform: uppercase;
+      text-align: right;
+      padding-top: 0.5rem;
+      user-select: text;
+    }
+    /* Payment Section */
+    .payment-section {
+      display: none; /* Hidden by default */
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .payment-section h2 {
+      color: #003366;
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      user-select: none;
+    }
+    .payment-section img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 12px;
+      user-select: none;
+    }
+    .pix-key {
+      background: #f5f5f5;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1rem;
+      color: #333;
+      width: 100%;
+      word-break: break-all;
+      user-select: text;
+    }
+    .btn-copy {
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 1rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background 0.3s;
+      width: 100%;
+      user-select: none;
+    }
+    .btn-copy:hover {
+      background: #0056b3;
+    }
+    .btn-confirm {
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 1rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background 0.3s;
+      width: 100%;
+      user-select: none;
+    }
+    .btn-confirm:hover {
+      background: #218838;
+    }
+    .confirmation-message {
+      display: none; /* Hidden by default */
+      font-size: 1.5rem;
+      color: #28a745;
+      font-weight: 700;
+      text-align: center;
+      user-select: none;
+    }
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 0.9rem 0;
+      background: #222A53dd;
+      color: #bbb;
+      font-size: 0.9rem;
+      user-select: none;
+      box-shadow: inset 0 1px 3px #00000033;
+    }
+    /* Responsive */
+    @media (max-width: 700px) {
+      .testimonial-list {
+        flex-direction: column;
+        align-items: center;
+      }
+      .testimonial {
+        width: 90%;
+      }
+    }
+    @media (max-width: 520px) {
+      main {
+        margin: 2rem 1rem 3rem;
+        padding: 1.5rem 1.8rem;
+      }
+      .hero h1 {
+        font-size: 2.6rem;
+      }
+      .offer-card {
+        font-size: 1.4rem;
+        padding: 1.2rem 1.8rem;
+        max-width: 100%;
+        width: auto;
+      }
+      .btn-buy {
+        padding: 1.2rem 3.5rem;
+        font-size: 1.2rem;
+      }
+      .benefits {
+        flex-direction: column;
+        gap: 1.3rem;
+      }
+      .product-image-container {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    MOUNJARO SHOP
+  </header>
+  <main>
+    <section class="hero" aria-label="Apresentação do produto de emagrecimento Mounjaro" id="productSection">
+      <h1>Emagreça em 30 Dias com Mounjaro</h1>
+      <p>As revolucionárias canetas de emagrecimento que ajudam a controlar o apetite e acelerar seu metabolismo.</p>
+      <div class="tagline">Resultados reais. Simples. Seguro.</div>
+      <div class="product-image-container" aria-label="Imagem da caneta Mounjaro" style="margin-top: 2rem;">
+        <img src="https://cdn.discordapp.com/attachments/1372032649530576979/1378958270219157584/Emagreca_Com_S.jpg?ex=683e7e77&amp;is=683d2cf7&amp;hm=beb151e0c4f01cc672fdd16977fcea320113cc78f162a8197063624f705c5edd" alt="Caneta de emagrecimento Mounjaro" />
+      </div>
+      <section class="offer-card" aria-label="Oferta de 3 canetas Mounjaro por R$ 49,90" style="margin-top: 2rem;">
+        <span class="label">3 Canetas por</span>
+        <span class="price">R$ 49,90</span>
+      </section>
+      <button class="btn-buy" type="button" aria-label="Comprar kit de canetas Mounjaro" onclick="showOrderForm()" style="margin-top: 1.8rem;">
+        COMPRAR AGORA
+      </button>
+      <div class="form-container" id="orderForm" aria-label="Formulário de pedido" style="margin-top: 2rem;">
+        <h2>Complete seu pedido</h2>
+        <input type="text" id="nameInput" placeholder="Nome" required />
+        <input type="email" id="emailInput" placeholder="Email" required />
+        <input type="text" id="streetInput" placeholder="Rua" required />
+        <input type="text" id="neighbourhoodInput" placeholder="Bairro" required />
+        <input type="text" id="cepInput" placeholder="CEP" required />
+        <input type="text" id="numberInput" placeholder="Número" required />
+        <button type="button" onclick="proceedToPayment()">Finalizar Compra</button>
+      </div>
+    </section>
+
+    <section class="product-info" aria-label="Informações sobre as canetas de emagrecimento Mounjaro" id="productInfo" style="margin-top: 2rem;">
+      <p><strong>Mounjaro</strong> é a solução prática para quem busca emagrecimento saudável e eficaz. Com tecnologia avançada, nossas canetas auxiliam no emagrecimento rápido controlando seu apetite e promovendo maior queima calórica.</p>
+      <div class="benefits" aria-label="Benefícios do produto">
+        <div class="benefit">Emagreça naturalmente em apenas 30 dias</div>
+        <div class="benefit">Reduza a fome e a vontade de comer</div>
+        <div class="benefit">Acelere o metabolismo de forma segura</div>
+        <div class="benefit">Fácil aplicação e uso prático no dia a dia</div>
+      </div>
+      <p>Adquira já o <strong>pack com 3 canetas</strong> com preço promocional de <strong>R$ 49,90</strong> e comece seu caminho para um corpo mais saudável e confiante!</p>
+    </section>
+    <section class="testimonials" aria-label="Depoimentos de clientes" style="margin-top: 2rem;">
+      <h2>Depoimentos de Clientes</h2>
+      <div class="testimonial-list">
+        <article class="testimonial">
+          <p>Perdi 15kg em um mês, adorei!</p>
+          <div class="stars" aria-label="Cinco estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="author">Juliana Silva</div>
+        </article>
+        <article class="testimonial">
+          <p>Eu não acreditei, mas comprei e perdi 45kg em 3 meses.</p>
+          <div class="stars" aria-label="Cinco estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="author">Ricardo Bastos</div>
+        </article>
+        <article class="testimonial">
+          <p>Minha autoestima melhorou muitoo!</p>
+          <div class="stars" aria-label="Cinco estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="author">Ana Medeiros</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="payment-section" id="paymentSection" aria-label="Pagamento via Pix">
+      <h2>Pagamento via Pix</h2>
+      <img src="https://cdn.discordapp.com/attachments/1372032649530576979/1378960960978681967/image.png?ex=683e80f8&is=683d2f78&hm=dcd84c3020f8c54d9863630af657b4a818590e30d687bd788ebfac8a708c163b" alt="QR Code Pix" />
+      <div class="pix-key" id="pixKey">00020126870014br.gov.bcb.pix01361ebac6ec-7515-4495-8b8e-68a21ba51c9f0225MOUNJAURO KIT 3 POR 49,90520400005303986540549.905802BR5924Fabiane Pinheiro Barbosa6006Brasil62290525202506020457FF27QMJMV49246304083B</div>
+      <button class="btn-copy" onclick="copyPixKey()">Copiar Chave Pix</button>
+      <button class="btn-confirm" onclick="confirmPayment()">Confirmar Pagamento</button>
+      <div class="confirmation-message" id="confirmationMessage">✔ Pedido realizado com sucesso!</div>
+    </section>
+  </main>
+  <footer>
+    &copy; 2024 Mounjaro Shop - Todos os direitos reservados.
+  </footer>
+  <script>
+    // Initially hide order form and payment section
+    document.getElementById('orderForm').style.display = 'none';
+    document.getElementById('paymentSection').style.display = 'none';
+
+    function showOrderForm() {
+      // Hide product buying section parts except hero image & info
+      document.getElementById('orderForm').style.display = 'flex';
+      document.querySelector('.btn-buy').style.display = 'none';
+      document.querySelector('.offer-card').style.display = 'none';
+      document.getElementById('productInfo').style.display = 'none';
+      document.querySelector('.product-image-container').style.display = 'none';
+      document.querySelector('.hero').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function proceedToPayment() {
+      // Show payment section and hide order form and product & testimonials
+      // No validation or restrictions as requested
+      document.getElementById('paymentSection').style.display = 'flex';
+      document.getElementById('orderForm').style.display = 'none';
+      document.getElementById('confirmationMessage').style.display = 'none';
+      document.getElementById('productSection').style.display = 'none';
+      document.getElementById('productInfo').style.display = 'none';
+      document.querySelector('.testimonials').style.display = 'none';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function copyPixKey() {
+      const pixKey = document.getElementById('pixKey').textContent;
+      navigator.clipboard.writeText(pixKey).then(() => {
+        alert('Chave Pix copiada para a área de transferência!');
+      }, () => {
+        alert('Falha ao copiar a chave Pix. Por favor copie manualmente.');
+      });
+    }
+
+    function confirmPayment() {
+      document.getElementById('confirmationMessage').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
+
